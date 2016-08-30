@@ -1,0 +1,45 @@
+= SHIP Java Bindings
+
+image:https://travis-ci.org/revinate/ship-java.svg?branch=master["Build Status", link="https://travis-ci.org/revinate/ship-java"]
+image:https://maven-badges.herokuapp.com/maven-central/com.revinate/ship-java/badge.svg["Build Status", link="https://maven-badges.herokuapp.com/maven-central/com.revinate/ship-java"]
+
+The Simple Hospitality Interchange Protocol, or SHIP, is a JSON-based message format, combined with a simple HTTP-based API, that aims to make it easy for hospitality-related systems and applications to exchange messages. This library is a Java implementation of the SHIP message types.
+
+For more details about SHIP please refer to the https://github.com/revinate/ship-sdk[ship-sdk] project.
+
+== Requirements
+
+* Java 1.8 and later.
+* Jackson Annotations 2 and later.
+
+== Installation
+
+=== Maven
+
+Add this dependency to your project's POM:
+
+[source,xml]
+----
+<dependency>
+  <groupId>com.revinate</groupId>
+  <artifactId>ship-java</artifactId>
+  <version>1.0.0</version>
+</dependency>
+----
+
+=== Gradle
+
+Add this dependency to your project's build script:
+
+[source.groovy]
+----
+compile 'com.revinate:ship-java:1.0.0'
+----
+
+== Versioning
+
+Version numbers of this library follow the `MAJOR.MINOR.PATCH` format, where `MAJOR.MINOR` refer to the version of the SHIP message specifications being implemented. For example, version `1.0.3` of this library implements SHIP message specifications version `1.0`.
+
+== License
+
+This library is under the MIT License.

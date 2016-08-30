@@ -1,0 +1,114 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group 'com.revinate'
+
+if (!hasProperty('sonatypeUsername')) {
+    ext.sonatypeUsername = null
+    ext.sonatypePassword = null
+}
+
+jar {
+    baseName = 'ship-java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly(group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version)
+    compileOnly(group: 'org.projectlombok', name: 'lombok', version: lombok_version)
+
+    testCompile(group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version)
+    testCompile(group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jackson_version)
+    testCompile(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version)
+    testCompile(group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jackson_version)
+    testCompile(group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jackson_version)
+    testCompile(group: 'junit', name:'junit', version: junit_version)
+    testCompile(group: 'org.assertj', name: 'assertj-core', version: assertj_version)
+    testCompile(group: 'com.revinate', name: 'assertj-json', version: assertj_json_version)
+    testCompile(group: 'com.github.fge', name: 'json-schema-validator', version: json_schema_validator_version)
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+        afterSuite { desc, result ->
+            if (!desc.parent) { // will match the outermost suite
+                println "Results: ${result.resultType} (${result.testCount} tests, " +
+                        "${result.successfulTestCount} successes, " +
+                        "${result.failedTestCount} failures, " +
+                        "${result.skippedTestCount} skipped)"
+            }
+        }
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives jar, javadocJar, sourcesJar
+}
+
+signing {
+    required { gradle.taskGraph.hasTask('uploadArchives') }
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            pom.project {
+                artifactId 'ship-java'
+                packaging 'jar'
+                name 'SHIP Java Bindings'
+                description 'SHIP Java Bindings'
+                url 'https://github.com/revinate/ship-java'
+
+                scm {
+                    url 'https://github.com/revinate/ship-java'
+                    connection 'scm:git:git://github.com/revinate/ship-java.git'
+                    developerConnection 'scm:git:ssh://git@github.com:revinate/ship-java.git'
+                }
+
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'http://opensource.org/licenses/MIT'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'revinate'
+                        name 'Revinate, Inc'
+                    }
+                }
+            }
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
