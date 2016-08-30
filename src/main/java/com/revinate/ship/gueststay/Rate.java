@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 public class Rate {
 
     public enum TimeUnitType {
-        DAY, HOUR
+        DAY, HOUR, MINUTE
     }
 
     private MonetaryValue amount;

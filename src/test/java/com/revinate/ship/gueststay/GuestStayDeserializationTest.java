@@ -43,15 +43,21 @@ public class GuestStayDeserializationTest {
 
         assertThat(stay.getPurposeOfStay()).isEqualTo("BUSINESS");
 
-        assertThat(stay.getTravelAgency())
-                .isNotNull()
-                .satisfies(travelAgency -> assertThat(travelAgency.getName()).isEqualTo("Avertine Travel"));
-
         assertThat(stay.getTotalRoomRevenue())
                 .isNotNull()
                 .satisfies(roomRevenue -> {
-                    assertThat(roomRevenue.getValue()).isEqualTo(BigDecimal.valueOf(404.5));
-                    assertThat(roomRevenue.getCurrency()).isEqualTo("USD");
+                    assertThat(roomRevenue.getAmountBeforeTax())
+                            .isNotNull()
+                            .satisfies(amountBeforeTax -> {
+                                assertThat(amountBeforeTax.getValue()).isEqualTo(BigDecimal.valueOf(404.5));
+                                assertThat(amountBeforeTax.getCurrency()).isEqualTo("USD");
+                            });
+                    assertThat(roomRevenue.getTaxAmount())
+                            .isNotNull()
+                            .satisfies(taxAmount -> {
+                                assertThat(taxAmount.getValue()).isEqualTo(BigDecimal.valueOf(35.39));
+                                assertThat(taxAmount.getCurrency()).isEqualTo("USD");
+                            });
                 });
 
         assertThat(stay.getDepositRequiredDate()).isEqualTo("2009-08-15");
@@ -79,14 +85,18 @@ public class GuestStayDeserializationTest {
                     assertThat(service).isNotNull();
                     assertThat(service.getInventoryCode()).isEqualTo("SPA");
                     assertThat(service.getRateCode()).isEqualTo("STD_SPA");
-                    assertThat(service.getPricePerUnit()).satisfies(price -> {
-                                assertThat(price.getValue()).isEqualTo(BigDecimal.valueOf(25.9));
-                                assertThat(price.getCurrency()).isEqualTo("USD");
-                            });
+                    assertThat(service.getPricePerUnit())
+                            .isNotNull()
+                            .satisfies(price -> assertThat(price.getAmountBeforeTax())
+                                    .isNotNull()
+                                    .satisfies(amountBeforeTax -> {
+                                        assertThat(amountBeforeTax.getValue()).isEqualTo(BigDecimal.valueOf(25.9));
+                                        assertThat(amountBeforeTax.getCurrency()).isEqualTo("USD");
+                                    }));
                 });
 
         assertThat(stay.getProfiles())
-                .hasSize(1)
+                .hasSize(2)
                 .first()
                 .satisfies(profile -> {
                     assertThat(profile).isNotNull();
