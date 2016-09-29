@@ -11,6 +11,7 @@ For more details about SHIP please refer to the https://github.com/revinate/ship
 
 * Java 1.8 and later.
 * Jackson Annotations 2 and later.
+* Hibernate Validator 5 and later.
 
 == Installation
 
@@ -23,7 +24,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.revinate</groupId>
   <artifactId>ship-java</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ----
 
@@ -33,7 +34,7 @@ Add this dependency to your project's build script:
 
 [source.groovy]
 ----
-compile 'com.revinate:ship-java:1.1.0'
+compile 'com.revinate:ship-java:1.1.1'
 ----
 
 == Versioning
