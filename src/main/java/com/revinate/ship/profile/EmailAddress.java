@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.validator.constraints.Email;
 
+import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -18,9 +20,14 @@ import java.time.OffsetDateTime;
 public class EmailAddress {
 
     @JsonProperty(required = true)
+    @NotNull
+    @Email
     private String emailAddress;
+
     @JsonProperty(required = true)
+    @NotNull
     private Boolean primary;
+
     private OffsetDateTime inactiveDate;
 
     @JsonIgnore

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,7 +20,9 @@ public class StayLength {
     }
 
     @JsonProperty(required = true)
+    @NotNull
     private Integer stayLength;
+
     @Deprecated
     private StayLengthUnits stayLengthUnits;
 

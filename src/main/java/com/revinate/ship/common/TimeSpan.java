@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -21,10 +22,15 @@ public class TimeSpan {
     }
 
     @JsonProperty(required = true)
+    @NotNull
     private OffsetDateTime startTime;
+
     @JsonProperty(required = true)
+    @NotNull
     private Integer timeUnits;
+
     @JsonProperty(required = true)
+    @NotNull
     private TimeUnitType timeUnitType;
 
     @JsonIgnore

@@ -22,6 +22,7 @@ repositories {
 
 dependencies {
     compileOnly(group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version)
+    compileOnly(group: 'org.hibernate', name: 'hibernate-validator', version: hibernate_validator_version)
     compileOnly(group: 'org.projectlombok', name: 'lombok', version: lombok_version)
 
     testCompile(group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version)
@@ -29,6 +30,8 @@ dependencies {
     testCompile(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version)
     testCompile(group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jackson_version)
     testCompile(group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jackson_version)
+    testCompile(group: 'org.hibernate', name: 'hibernate-validator', version: hibernate_validator_version)
+    testCompile(group: 'org.glassfish.web', name: 'javax.el', version: javax_el_version)
     testCompile(group: 'junit', name:'junit', version: junit_version)
     testCompile(group: 'org.assertj', name: 'assertj-core', version: assertj_version)
     testCompile(group: 'com.revinate', name: 'assertj-json', version: assertj_json_version)

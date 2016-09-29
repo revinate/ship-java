@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.revinate.ship.common.MonetaryValue;
 import lombok.*;
 
+import javax.validation.Valid;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -21,9 +22,13 @@ public class Rate {
         DAY, HOUR, MINUTE
     }
 
+    @Valid
     private MonetaryValue amount;
+
     private OffsetDateTime startTime;
+
     private Integer timeUnits;
+
     private TimeUnitType timeUnitType;
 
     @JsonIgnore

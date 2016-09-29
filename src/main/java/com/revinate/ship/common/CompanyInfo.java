@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,6 +17,7 @@ import lombok.*;
 public class CompanyInfo {
 
     @JsonProperty(required = true)
+    @NotNull
     private String name;
 
     @JsonIgnore

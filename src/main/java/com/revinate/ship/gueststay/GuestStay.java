@@ -6,6 +6,9 @@ import com.revinate.ship.common.*;
 import com.revinate.ship.profile.Profile;
 import lombok.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -31,60 +34,127 @@ public class GuestStay {
     }
 
     @JsonProperty(required = true)
+    @NotNull
     private Action action;
+
     @JsonProperty(required = true)
+    @NotNull
     private String property;
+
     private String interfaceType;
+
     private String remoteSystemName;
+
     @JsonProperty(required = true)
+    @NotNull
     private String confirmationCode;
+
     @JsonProperty(required = true)
+    @NotNull
     private StatusCode statusCode;
+
     private String guaranteeCode;
+
     private OffsetDateTime lastUpdatedAt;
+
     private String lastUpdatedBy;
+
     private String bookingNumber;
+
     private OffsetDateTime bookingDate;
+
     private String bookedBy;
+
     private String reservationSource;
+
     private String cancellationNumber;
+
     private OffsetDateTime cancellationDate;
+
     private String canceledBy;
+
     @JsonProperty(required = true)
+    @NotNull
     private LocalDate checkinDate;
+
     private OffsetDateTime actualCheckinDate;
+
     private String checkedInBy;
+
     @JsonProperty(required = true)
+    @NotNull
     private LocalDate checkoutDate;
+
     private OffsetDateTime actualCheckoutDate;
+
     private String checkedOutBy;
+
+    @Valid
     private StayLength stayLength;
+
     private Integer numberOfAdults;
+
     private Integer numberOfChildren;
+
     private String roomNumber;
+
     private String roomType;
+
     private String roomTypeChargeCode;
+
     private String blockCode;
+
     private Integer numberOfRooms;
+
     private String market;
+
     private String purposeOfStay;
+
     @Deprecated
     private CompanyInfo travelAgency;
+
+    @Valid
     private MonetaryAmount totalRoomRevenue;
+
+    @Valid
     private MonetaryAmount totalFoodAndBeverageRevenue;
+
+    @Valid
     private MonetaryAmount totalLuggageRevenue;
+
+    @Valid
     private MonetaryAmount totalOtherRevenue;
+
     @Deprecated
     private MonetaryValue totalTaxes;
+
+    @Valid
     private MonetaryValue totalRemainingBalance;
+
+    @Valid
     private MonetaryValue totalDepositRequired;
+
     private LocalDate depositRequiredDate;
+
+    @Valid
     private List<RatePlan> ratePlans;
+
+    @Valid
     private List<Service> services;
+
     @JsonProperty(required = true)
+    @NotNull
+    @Size(min = 1)
+    @Valid
     private List<Profile> profiles;
+
+    @Valid
     private List<GuestNote> guestNotes;
+
+    @Valid
     private List<UserDefinedField> pmsDefinedFields;
+
+    @Valid
     private List<UserDefinedField> propertyDefinedFields;
 
     public void addRatePlan(RatePlan ratePlan) {

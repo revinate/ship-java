@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -20,7 +21,9 @@ public class MonetaryValue {
     public static final MonetaryValue ZERO = new MonetaryValue(BigDecimal.ZERO);
 
     @JsonProperty(required = true)
+    @NotNull
     private BigDecimal value;
+
     private String currency;
 
     @JsonIgnore

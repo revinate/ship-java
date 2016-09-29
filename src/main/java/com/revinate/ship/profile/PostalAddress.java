@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -21,14 +22,24 @@ public class PostalAddress {
     }
 
     private String address1;
+
     private String address2;
+
     private String city;
+
     private String state;
+
     private String country;
+
     private String zipCode;
+
     @JsonProperty(required = true)
+    @NotNull
     private AddressType addressType;
+
     @JsonProperty(required = true)
+    @NotNull
     private Boolean primary;
+
     private OffsetDateTime inactiveDate;
 }

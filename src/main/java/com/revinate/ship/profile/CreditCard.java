@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -18,9 +19,13 @@ import java.time.LocalDate;
 public class CreditCard {
 
     private String creditCardLast4;
+
     private LocalDate creditCardExpirationDate;
+
     private String creditCardType;
+
     @JsonProperty(required = true)
+    @NotNull
     private Boolean primary;
 
     @JsonIgnore

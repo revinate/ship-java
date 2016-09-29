@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -17,10 +18,15 @@ public class MonetaryAmount {
 
     public static final MonetaryAmount ZERO = new MonetaryAmount();
 
+    @Valid
     private MonetaryValue amountBeforeTax;
+
+    @Valid
     private MonetaryValue taxAmount;
+
     @Deprecated
     private BigDecimal value;
+
     @Deprecated
     private String currency;
 

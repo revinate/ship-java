@@ -7,6 +7,8 @@ import com.revinate.ship.common.MonetaryAmount;
 import com.revinate.ship.common.TimeSpan;
 import lombok.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Getter
@@ -20,13 +22,23 @@ import java.math.BigDecimal;
 public class Service {
 
     @JsonProperty(required = true)
+    @NotNull
     private String inventoryCode;
+
     @JsonProperty(required = true)
+    @NotNull
     private String rateCode;
+
+    @Valid
     private TimeSpan timeSpan;
+
     @JsonProperty(required = true)
+    @NotNull
+    @Valid
     private MonetaryAmount pricePerUnit;
+
     @JsonProperty(required = true)
+    @NotNull
     private Integer numberOfUnits;
 
     @JsonIgnore

@@ -6,6 +6,8 @@ import com.revinate.ship.common.CompanyInfo;
 import com.revinate.ship.common.GuestNote;
 import lombok.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,31 +37,64 @@ public class Profile {
     }
 
     @JsonProperty(required = true)
+    @NotNull
     private Action action;
+
     @JsonProperty(required = true)
+    @NotNull
     private String property;
+
     private String interfaceType;
+
     private String remoteSystemName;
+
     private String profileId;
+
     @JsonProperty(required = true)
+    @NotNull
     private ProfileType profileType;
+
     private String title;
+
     private String firstName;
+
     private String middleName;
+
     @JsonProperty(required = true)
+    @NotNull
     private String lastName;
+
     private Gender gender;
+
     private LocalDate dateOfBirth;
+
     private String vipStatus;
+
     private String primaryLanguage;
+
+    @Valid
     private CompanyInfo companyInfo;
+
     private Boolean emailOptOut;
+
     private Boolean mailOptOut;
+
+    @Valid
     private List<EmailAddress> emailAddresses;
+
+    @Valid
     private List<PostalAddress> postalAddresses;
+
+    @Valid
     private List<PhoneNumber> phoneNumbers;
+
+    @Valid
     private List<Membership> memberships;
+
+    @Valid
     private List<CreditCard> creditCards;
+
+    @Valid
     private List<GuestNote> guestNotes;
 
     public void addEmailAddress(EmailAddress emailAddress) {

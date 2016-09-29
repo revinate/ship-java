@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.revinate.ship.common.TimeSpan;
 import lombok.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,9 +23,15 @@ import java.util.Objects;
 public class RatePlan {
 
     @JsonProperty(required = true)
+    @NotNull
     private String rateCode;
+
+    @Valid
     private TimeSpan timeSpan;
+
     private Boolean confidential;
+
+    @Valid
     private List<Rate> rates;
 
     @JsonIgnore

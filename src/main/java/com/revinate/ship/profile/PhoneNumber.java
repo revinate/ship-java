@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -22,11 +23,17 @@ public class PhoneNumber {
     }
 
     @JsonProperty(required = true)
+    @NotNull
     private String phoneNumber;
+
     @JsonProperty(required = true)
+    @NotNull
     private PhoneNumberType phoneNumberType;
+
     @JsonProperty(required = true)
+    @NotNull
     private Boolean primary;
+
     private OffsetDateTime inactiveDate;
 
     @JsonIgnore

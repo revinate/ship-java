@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -18,9 +19,13 @@ import java.time.OffsetDateTime;
 public class GuestNote {
 
     private String title;
+
     @JsonProperty(required = true)
+    @NotNull
     private String text;
+
     private String type;
+
     private OffsetDateTime time;
 
     @JsonIgnore
