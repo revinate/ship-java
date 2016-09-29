@@ -30,7 +30,7 @@ public class SimpleGuestStaySerializationTest {
             .roomType("KING")
             .channel("SALE")
             .ratePlanCode("BAR")
-            .rate(BigDecimal.valueOf(99.95))
+            .rate(new BigDecimal("99.95"))
             .title("Dr")
             .firstName("Mary")
             .lastName("Claire")

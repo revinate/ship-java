@@ -27,7 +27,7 @@ public class SimpleGuestStayDeserializationTest {
         assertThat(stay.getRoomType()).isEqualTo("KING");
         assertThat(stay.getChannel()).isEqualTo("SALE");
         assertThat(stay.getRatePlanCode()).isEqualTo("BAR");
-        assertThat(stay.getRate()).isEqualTo(BigDecimal.valueOf(99.95));
+        assertThat(stay.getRate()).isEqualTo(new BigDecimal("99.95"));
         assertThat(stay.getTitle()).isEqualTo("Dr");
         assertThat(stay.getFirstName()).isEqualTo("Mary");
         assertThat(stay.getLastName()).isEqualTo("Claire");

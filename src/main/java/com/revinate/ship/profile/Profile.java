@@ -7,13 +7,16 @@ import com.revinate.ship.common.GuestNote;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
+@EqualsAndHashCode
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Profile {
@@ -58,4 +61,46 @@ public class Profile {
     private List<Membership> memberships;
     private List<CreditCard> creditCards;
     private List<GuestNote> guestNotes;
+
+    public void addEmailAddress(EmailAddress emailAddress) {
+        if (Objects.isNull(this.emailAddresses)) {
+            this.emailAddresses = new ArrayList<>();
+        }
+        this.emailAddresses.add(emailAddress);
+    }
+
+    public void addPostalAddress(PostalAddress postalAddress) {
+        if (Objects.isNull(this.postalAddresses)) {
+            this.postalAddresses = new ArrayList<>();
+        }
+        this.postalAddresses.add(postalAddress);
+    }
+
+    public void addPhoneNumber(PhoneNumber phoneNumber) {
+        if (Objects.isNull(this.phoneNumbers)) {
+            this.phoneNumbers = new ArrayList<>();
+        }
+        this.phoneNumbers.add(phoneNumber);
+    }
+
+    public void addMembership(Membership membership) {
+        if (Objects.isNull(this.memberships)) {
+            this.memberships = new ArrayList<>();
+        }
+        this.memberships.add(membership);
+    }
+
+    public void addCreditCard(CreditCard creditCard) {
+        if (Objects.isNull(this.creditCards)) {
+            this.creditCards = new ArrayList<>();
+        }
+        this.creditCards.add(creditCard);
+    }
+
+    public void addGuestNote(GuestNote guestNote) {
+        if (Objects.isNull(this.guestNotes)) {
+            this.guestNotes = new ArrayList<>();
+        }
+        this.guestNotes.add(guestNote);
+    }
 }

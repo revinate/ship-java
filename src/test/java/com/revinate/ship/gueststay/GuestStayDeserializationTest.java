@@ -49,13 +49,13 @@ public class GuestStayDeserializationTest {
                     assertThat(roomRevenue.getAmountBeforeTax())
                             .isNotNull()
                             .satisfies(amountBeforeTax -> {
-                                assertThat(amountBeforeTax.getValue()).isEqualTo(BigDecimal.valueOf(404.5));
+                                assertThat(amountBeforeTax.getValue()).isEqualTo(new BigDecimal("404.5"));
                                 assertThat(amountBeforeTax.getCurrency()).isEqualTo("USD");
                             });
                     assertThat(roomRevenue.getTaxAmount())
                             .isNotNull()
                             .satisfies(taxAmount -> {
-                                assertThat(taxAmount.getValue()).isEqualTo(BigDecimal.valueOf(35.39));
+                                assertThat(taxAmount.getValue()).isEqualTo(new BigDecimal("35.39"));
                                 assertThat(taxAmount.getCurrency()).isEqualTo("USD");
                             });
                 });
@@ -72,7 +72,7 @@ public class GuestStayDeserializationTest {
                             .hasSize(4)
                             .first()
                             .satisfies(rate -> {
-                                assertThat(rate.getAmount().getValue()).isEqualTo(BigDecimal.valueOf(100L));
+                                assertThat(rate.getAmount().getValue()).isEqualTo(new BigDecimal("100"));
                                 assertThat(rate.getAmount().getCurrency()).isEqualTo("USD");
                                 assertThat(rate.getStartTime()).isEqualTo("2007-07-19T00:00:00.000-07:00");
                             });
@@ -90,7 +90,7 @@ public class GuestStayDeserializationTest {
                             .satisfies(price -> assertThat(price.getAmountBeforeTax())
                                     .isNotNull()
                                     .satisfies(amountBeforeTax -> {
-                                        assertThat(amountBeforeTax.getValue()).isEqualTo(BigDecimal.valueOf(25.9));
+                                        assertThat(amountBeforeTax.getValue()).isEqualTo(new BigDecimal("25.9"));
                                         assertThat(amountBeforeTax.getCurrency()).isEqualTo("USD");
                                     }));
                 });
