@@ -79,7 +79,7 @@ public class GuestStayDeserializationTest {
                 });
 
         assertThat(stay.getServices())
-                .hasSize(1)
+                .hasSize(4)
                 .first()
                 .satisfies(service -> {
                     assertThat(service).isNotNull();
