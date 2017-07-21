@@ -49,6 +49,8 @@ public class Profile {
 
     private String remoteSystemName;
 
+    private String accountId;
+
     private String profileId;
 
     @JsonProperty(required = true)

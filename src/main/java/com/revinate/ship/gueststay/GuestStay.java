@@ -45,6 +45,8 @@ public class GuestStay {
 
     private String remoteSystemName;
 
+    private String accountId;
+
     @JsonProperty(required = true)
     @NotNull
     private String confirmationCode;
