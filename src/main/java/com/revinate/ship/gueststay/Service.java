@@ -20,14 +20,16 @@ import java.math.BigDecimal;
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Service {
-
+    public enum Category {
+        FOOD, SPA, LUGGAGE, PARKING, FEE, TAX, OTHER
+    }
     @JsonProperty(required = true)
     @NotNull
     private String inventoryCode;
 
-    @JsonProperty(required = true)
-    @NotNull
     private String rateCode;
+
+    private Category category;
 
     @Valid
     private TimeSpan timeSpan;

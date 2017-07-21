@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.revinate.ship.common.CompanyInfo;
 import com.revinate.ship.common.GuestNote;
+import com.revinate.ship.common.UserDefinedField;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -97,6 +98,13 @@ public class Profile {
     @Valid
     private List<GuestNote> guestNotes;
 
+
+    @Valid
+    private List<UserDefinedField> pmsDefinedFields;
+
+    @Valid
+    private List<UserDefinedField> propertyDefinedFields;
+
     public void addEmailAddress(EmailAddress emailAddress) {
         if (Objects.isNull(this.emailAddresses)) {
             this.emailAddresses = new ArrayList<>();
@@ -137,5 +145,19 @@ public class Profile {
             this.guestNotes = new ArrayList<>();
         }
         this.guestNotes.add(guestNote);
+    }
+
+    public void addPmsDefinedField(UserDefinedField userDefinedField) {
+        if (Objects.isNull(this.pmsDefinedFields)) {
+            this.pmsDefinedFields = new ArrayList<>();
+        }
+        this.pmsDefinedFields.add(userDefinedField);
+    }
+
+    public void addPropertyDefinedField(UserDefinedField userDefinedField) {
+        if (Objects.isNull(this.propertyDefinedFields)) {
+            this.propertyDefinedFields = new ArrayList<>();
+        }
+        this.propertyDefinedFields.add(userDefinedField);
     }
 }
