@@ -117,12 +117,15 @@ public class GuestStay {
     private MonetaryAmount totalRoomRevenue;
 
     @Valid
+    @Deprecated
     private MonetaryAmount totalFoodAndBeverageRevenue;
 
     @Valid
+    @Deprecated
     private MonetaryAmount totalLuggageRevenue;
 
     @Valid
+    @Deprecated
     private MonetaryAmount totalOtherRevenue;
 
     @Deprecated
