@@ -114,7 +114,6 @@ public class GuestStay {
     private CompanyInfo travelAgency;
 
     @Valid
-    @Deprecated
     private MonetaryAmount totalRoomRevenue;
 
     @Valid
