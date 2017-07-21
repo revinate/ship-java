@@ -37,8 +37,6 @@ public class GuestStay {
     @NotNull
     private Action action;
 
-    private String accountId;
-
     @JsonProperty(required = true)
     @NotNull
     private String property;
@@ -46,6 +44,8 @@ public class GuestStay {
     private String interfaceType;
 
     private String remoteSystemName;
+
+    private String accountId;
 
     @JsonProperty(required = true)
     @NotNull
