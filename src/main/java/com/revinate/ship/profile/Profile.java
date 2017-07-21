@@ -41,6 +41,8 @@ public class Profile {
     @NotNull
     private Action action;
 
+    private String accountId;
+
     @JsonProperty(required = true)
     @NotNull
     private String property;
