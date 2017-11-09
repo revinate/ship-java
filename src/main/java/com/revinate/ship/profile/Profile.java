@@ -30,7 +30,7 @@ public class Profile {
 
     public enum ProfileType {
         NA, GUEST, CORPORATE, TRAVEL, WHOLESALER, GROUP, TOUR, CRO, CONTACT,
-        AIRLINE, REPCOMPANY, INTERNET
+        AIRLINE, REPCOMPANY, INTERNET, HOTEL
     }
 
     public enum Gender {
