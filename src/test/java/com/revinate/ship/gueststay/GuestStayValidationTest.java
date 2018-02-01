@@ -54,6 +54,14 @@ public class GuestStayValidationTest {
     }
 
     @Test
+    public void validateGuestStayWithBadEmail_shouldPass() throws Exception {
+        guestStay.getProfiles().get(0).addEmailAddress(new EmailAddress("invalid", true));
+        Set<ConstraintViolation<GuestStay>> violations = validator.validate(guestStay);
+
+        assertThat(violations).isEmpty();
+    }
+
+    @Test
     public void validateGuestStayWithNullField_shouldFail() throws Exception {
         guestStay.setAction(null);
         Set<ConstraintViolation<GuestStay>> violations = validator.validate(guestStay);
@@ -92,20 +100,6 @@ public class GuestStayValidationTest {
                 .satisfies(violation -> {
                     assertThat(violation.getPropertyPath()).hasToString("profiles");
                     assertThat(violation.getMessage()).startsWith("size must be between 1 and");
-                });
-    }
-
-    @Test
-    public void validateGuestStayWithBadEmail_shouldFail() throws Exception {
-        guestStay.getProfiles().get(0).addEmailAddress(new EmailAddress("invalid", true));
-        Set<ConstraintViolation<GuestStay>> violations = validator.validate(guestStay);
-
-        assertThat(violations)
-                .hasSize(1)
-                .first()
-                .satisfies(violation -> {
-                    assertThat(violation.getPropertyPath()).hasToString("profiles[0].emailAddresses[0].emailAddress");
-                    assertThat(violation.getMessage()).isEqualTo("not a well-formed email address");
                 });
     }
 }
