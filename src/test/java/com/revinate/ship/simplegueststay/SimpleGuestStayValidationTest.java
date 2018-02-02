@@ -45,14 +45,6 @@ public class SimpleGuestStayValidationTest {
     }
 
     @Test
-    public void validateSimpleGuestStayWithBadEmail_shouldPass() throws Exception {
-        simpleGuestStay.setEmail("invalid");
-        Set<ConstraintViolation<SimpleGuestStay>> violations = validator.validate(simpleGuestStay);
-
-        assertThat(violations).isEmpty();
-    }
-
-    @Test
     public void validateSimpleGuestStayWithNullField_shouldFail() throws Exception {
         simpleGuestStay.setAccountName(null);
         Set<ConstraintViolation<SimpleGuestStay>> violations = validator.validate(simpleGuestStay);
@@ -63,6 +55,20 @@ public class SimpleGuestStayValidationTest {
                 .satisfies(violation -> {
                     assertThat(violation.getPropertyPath()).hasToString("accountName");
                     assertThat(violation.getMessage()).isEqualTo("may not be null");
+                });
+    }
+
+    @Test
+    public void validateSimpleGuestStayWithBadEmail_shouldFail() throws Exception {
+        simpleGuestStay.setEmail("invalid");
+        Set<ConstraintViolation<SimpleGuestStay>> violations = validator.validate(simpleGuestStay);
+
+        assertThat(violations)
+                .hasSize(1)
+                .first()
+                .satisfies(violation -> {
+                    assertThat(violation.getPropertyPath()).hasToString("email");
+                    assertThat(violation.getMessage()).isEqualTo("not a well-formed email address");
                 });
     }
 }

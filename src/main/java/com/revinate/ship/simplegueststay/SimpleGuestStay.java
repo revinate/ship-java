@@ -63,6 +63,7 @@ public class SimpleGuestStay {
 
     @JsonProperty(required = true)
     @NotNull
+    @Email
     private String email;
 
     private String phone;
