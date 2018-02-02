@@ -21,7 +21,6 @@ public class EmailAddress {
 
     @JsonProperty(required = true)
     @NotNull
-    @Email
     private String emailAddress;
 
     @JsonProperty(required = true)

@@ -42,6 +42,14 @@ public class ProfileValidationTest {
     }
 
     @Test
+    public void validateProfileWithBadEmail_shouldPass() throws Exception {
+        profile.addEmailAddress(new EmailAddress("invalid", true));
+        Set<ConstraintViolation<Profile>> violations = validator.validate(profile);
+
+        assertThat(violations).isEmpty();
+    }
+
+    @Test
     public void validateProfileWithNullField_shouldFail() throws Exception {
         profile.setAction(null);
         Set<ConstraintViolation<Profile>> violations = validator.validate(profile);
@@ -66,20 +74,6 @@ public class ProfileValidationTest {
                 .satisfies(violation -> {
                     assertThat(violation.getPropertyPath()).hasToString("companyInfo.name");
                     assertThat(violation.getMessage()).isEqualTo("may not be null");
-                });
-    }
-
-    @Test
-    public void validateProfileWithBadEmail_shouldFail() throws Exception {
-        profile.addEmailAddress(new EmailAddress("invalid", true));
-        Set<ConstraintViolation<Profile>> violations = validator.validate(profile);
-
-        assertThat(violations)
-                .hasSize(1)
-                .first()
-                .satisfies(violation -> {
-                    assertThat(violation.getPropertyPath()).hasToString("emailAddresses[0].emailAddress");
-                    assertThat(violation.getMessage()).isEqualTo("not a well-formed email address");
                 });
     }
 }
