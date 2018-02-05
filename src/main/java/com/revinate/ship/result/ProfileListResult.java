@@ -13,7 +13,6 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProfileListResult extends Result {
 
@@ -35,5 +34,10 @@ public class ProfileListResult extends Result {
             this.profiles = new ArrayList<>();
         }
         this.profiles.addAll(profiles);
+    }
+
+    @Override
+    public String toString() {
+        return summary.toString();
     }
 }

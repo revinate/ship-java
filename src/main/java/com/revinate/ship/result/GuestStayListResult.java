@@ -13,7 +13,6 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GuestStayListResult extends Result {
 
@@ -43,5 +42,10 @@ public class GuestStayListResult extends Result {
             this.guestStays = new ArrayList<>();
         }
         this.guestStays.addAll(guestStays);
+    }
+
+    @Override
+    public String toString() {
+        return summary.toString();
     }
 }
