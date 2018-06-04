@@ -63,8 +63,6 @@ public class Profile {
 
     private String middleName;
 
-    @JsonProperty(required = true)
-    @NotNull
     private String lastName;
 
     private Gender gender;
