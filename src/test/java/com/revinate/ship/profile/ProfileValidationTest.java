@@ -76,4 +76,12 @@ public class ProfileValidationTest {
                     assertThat(violation.getMessage()).isEqualTo("may not be null");
                 });
     }
+
+    @Test
+    public void validateProfileWithNullLastName_shouldPass() throws Exception {
+        profile.setLastName(null);
+        Set<ConstraintViolation<Profile>> violations = validator.validate(profile);
+
+        assertThat(violations).isEmpty();
+    }
 }
