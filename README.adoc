@@ -24,7 +24,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.revinate</groupId>
   <artifactId>ship-java</artifactId>
-  <version>1.6.1</version>
+  <version>1.6.0</version>
 </dependency>
 ----
 
@@ -34,7 +34,7 @@ Add this dependency to your project's build script:
 
 [source.groovy]
 ----
-compile 'com.revinate:ship-java:1.6.1'
+compile 'com.revinate:ship-java:1.6.0'
 ----
 
 == Versioning
